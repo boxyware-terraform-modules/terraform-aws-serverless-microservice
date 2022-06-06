@@ -61,7 +61,7 @@ The roles granted are specifically:
 |------|-------------|------|---------|:--------:|
 | name | Name of the whole API. This variable will be used to give a name to the API Gateway API. | `string` | n/a | yes |
 | context | HTTP context of the API. All the microservices will be created as REST resources under this context. E.g.: /{context}/{resource_name} | `string` | n/a | yes |
-| microservices | Map to group all the microservices configuration. The map key represent the name of the microservice and the value contains all the parameters needed for the deployment as a REST resource. | <pre>map(object({<br>    description = string<br>    source_path = string<br>    handler     = string<br>    runtime     = string<br>    iam         = string<br>    trigger = object({<br>    method = string<br>    path   = string<br>  }))</pre> | n/a | yes |
+| microservices | Map to group all the microservices configuration. The map key represent the name of the microservice and the value contains all the parameters needed for the deployment as a REST resource. | <pre>map(object({<br>    description = string<br>    source_path = string<br>    handler     = string<br>    runtime     = string<br>    iam         = string<br>    trigger = object({<br>      method = string<br>      path   = string<br>  }))</pre> | n/a | yes |
 | labels | The tags for the AWS Lambda and AWS API Gateway resources | `any` | `{}` | no |
 
 ## Outputs
