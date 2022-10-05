@@ -13,7 +13,7 @@ There are multiple examples included in the [examples](./examples/) folder but s
 ```hcl
 module "microservices" {
   source  = "boxyware-terraform-modules/terraform-aws-serverless-microservice/aws"
-  version = "~> 0.0.1"
+  version = "~> 1.0.0"
 
   name    = "my-micro"
   context = "api"
@@ -32,8 +32,11 @@ module "microservices" {
       iam         = null
       
       trigger = {
-        method = "GET"
-        path   = "/health"
+        http = {
+          method = "GET"
+          path   = "/health"
+        }
+        topic = "my-sns-arn"
       }
     },  
   }
@@ -49,11 +52,14 @@ The AWS Serverless Microservices module will take the following actions:
 3. Create an AWS API Gateway Stage using `context` as name.
 4. Configure the access logs.
 5. Create as many AWS API Gateway Routes as different microservices objects have been passed in `microservices`.
-6. Assign the IAM permission to the API Gateway API to invoke the different Lambda functions.
+6. Assign the IAM permission to the API Gateway service to invoke the different Lambda functions.
+7. Creates a SNS subscription.
+8. Assign the IAM permission to the SNS service to invoke the different Lambda functions.
 
 The roles granted are specifically:
 
 - `AllowExecutionFromAPIGateway` on the API Gateway API created for this project
+- `AllowExecutionFromSNS` on the API Gateway API created for this project
 
 ## Inputs
 

@@ -98,7 +98,7 @@ resource "aws_lambda_permission" "api" {
 }
 
 #-----------------------------------------------------------------------------------
-# HTTP Trigger
+# SNS Trigger
 #-----------------------------------------------------------------------------------
 resource "aws_sns_topic_subscription" "this" {
   for_each  = { for k, v in var.microservices : k => v if (v.trigger != null && v.trigger.topic != null) }
