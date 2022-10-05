@@ -15,10 +15,13 @@ variable "microservices" {
     handler     = string
     runtime     = string
     iam         = string
-    # env_vars = any
+    env_vars    = any
     trigger = object({
-      method = string
-      path   = string
+      http = optional(object({
+        method = string
+        path   = string
+      }))
+      topic = optional(string)
     })
   }))
   description = "Microservice information."
