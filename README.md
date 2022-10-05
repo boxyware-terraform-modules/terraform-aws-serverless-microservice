@@ -12,7 +12,7 @@ There are multiple examples included in the [examples](./examples/) folder but s
 
 ```hcl
 module "microservices" {
-  source = "boxyware-terraform-modules/terraform-aws-serverless-microservice"
+  source  = "boxyware-terraform-modules/terraform-aws-serverless-microservice/aws"
   version = "~> 0.0.1"
 
   name    = "my-micro"
