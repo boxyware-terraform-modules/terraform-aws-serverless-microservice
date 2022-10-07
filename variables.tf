@@ -14,7 +14,7 @@ variable "microservices" {
     source_path = string
     handler     = string
     runtime     = string
-    iam         = string
+    iam         = list(string)
     env_vars    = any
     trigger = object({
       http = optional(object({

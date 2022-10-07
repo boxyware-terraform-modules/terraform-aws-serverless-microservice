@@ -12,8 +12,9 @@ module "api_function" {
   handler               = each.value.handler
   runtime               = each.value.runtime
   environment_variables = each.value.env_vars
-  attach_policy         = each.value.iam != null
-  policy                = each.value.iam
+  attach_policies       = length(each.value.iam) > 0
+  policies              = each.value.iam
+  number_of_policies    = length(each.value.iam)
 
   tags = merge(
     tomap({ Name = "${var.name}-${each.key}" }),
